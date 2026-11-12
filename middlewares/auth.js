@@ -5,11 +5,12 @@ const JWT_SECRET = 'secret-mvp-key';
 // Middleware: Xác thực JWT token
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Định dạng: Bearer <token>
 
-  if (!token) {
-    return res.status(401).json({ message: 'Không tìm thấy token xác thực' });
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Không tìm thấy token xác thực hoặc sai định dạng Bearer' });
   }
+
+  const token = authHeader.split(' ')[1];
 
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) {

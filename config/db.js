@@ -9,6 +9,8 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
     console.error('Lỗi kết nối cơ sở dữ liệu:', err.message);
   } else {
     console.log('Đã kết nối thành công tới database.db');
+    db.run('PRAGMA foreign_keys = ON;');
+    initializeDB();
   }
 });
 

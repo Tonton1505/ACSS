@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { initializeDB } = require('./config/db');
+require('./config/db');
 const authRoutes = require('./routes/auth');
 const applicationRoutes = require('./routes/applications');
 
@@ -14,9 +14,6 @@ app.use(express.json());
 // Routes
 app.use('/api', authRoutes);
 app.use('/api/applications', applicationRoutes);
-
-// Khởi tạo bảng dữ liệu
-initializeDB();
 
 // Khởi chạy server
 app.listen(PORT, () => {
