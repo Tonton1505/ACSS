@@ -1,0 +1,13 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@fontsource-variable/inter';
+import App from './App';
+import './styles.css';
+import './liquid.css';
+import './neutral.css';
+import './account.css';
+import './themes.css';
+import './fresh.css';
+import './glass-material.css';
+import './reactive-glass.css';
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
